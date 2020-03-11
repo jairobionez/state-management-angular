@@ -1,0 +1,26 @@
+<div class="container main-container">
+    <form (ngSubmit)="adicionarTarefa()" [formGroup]="tarefaForm">
+
+        <div class="row text-left mt-3">
+            <div style="padding-left: 15px;" class="form-group">
+                <input class="form-control" style="width: 350px;" id="nome" placeholder="Nova tarefa"
+                    formControlName="nome" type="text"
+                    [ngClass]="{'is-invalid': tarefaForm.get('nome').errors && (tarefaForm.get('nome').touched || tarefaForm.get('nome').dirty)}">
+                <span class="text-danger"
+                    *ngIf="tarefaForm.get('nome').errors?.required && (tarefaForm.get('nome').touched || tarefaForm.get('nome').dirty)">
+                    <p>O campo é obrigatório</p>
+                </span>
+            </div>
+            <div style="padding-left: 30px;" class="form-group">
+                <button class="btn btn-primary" id="Registrar" type="submit">Registrar</button>
+            </div>
+        </div>
+
+    </form>
+    <div class="row text-center">
+        <tasks class="col-md-4"></tasks>
+        <tasks-iniciadas class="col-md-4"></tasks-iniciadas>
+        <tasks-finalizadas class="col-md-4"></tasks-finalizadas>
+    </div>
+
+</div>
